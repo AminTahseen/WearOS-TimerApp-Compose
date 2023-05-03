@@ -15,11 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.wear.compose.material.*
 import com.example.wearos_compose.R
+import com.example.wearos_compose.presentation.constants.*
 import com.example.wearos_compose.presentation.theme.WearOSComposeTheme
 import kotlin.system.exitProcess
 
 @Composable
-fun LandingComposable(onNavigate:()->Unit) {
+fun LandingComposable(onNavigate: () -> Unit) {
     WearOSComposeTheme {
         Column(
             modifier = Modifier
@@ -30,7 +31,7 @@ fun LandingComposable(onNavigate:()->Unit) {
         ) {
             LocationIcon()
             Greeting()
-            ActionsRow(onNavigate= onNavigate)
+            ActionsRow(onNavigate = onNavigate)
         }
     }
 }
@@ -83,30 +84,36 @@ fun ActionsRow(onNavigate: () -> Unit) {
 
 @Composable
 fun Greeting() {
- Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-     Text(
-         modifier = Modifier
-             .fillMaxWidth(),
-         textAlign = TextAlign.Center,
-         color = Color.White,
-         text = "WristTimer",
-         style = TextStyle(fontSize = 25.sp, fontWeight = FontWeight.Bold)
+    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            color = Color.White,
+            text = "WristTimer",
+            style = TextStyle(fontSize = 25.sp, fontWeight = FontWeight.Bold)
 
-     )
-     Text(
-         modifier = Modifier
-             .fillMaxWidth()
-             .padding(bottom = 5.dp),
-         textAlign = TextAlign.Center,
-         color = Color.Gray,
-         text = "Your one time timer assistant",
-         style = TextStyle(fontSize = 12.sp)
+        )
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 5.dp),
+            textAlign = TextAlign.Center,
+            color = Color.Gray,
+            text = "Your one time timer assistant",
+            style = TextStyle(fontSize = 12.sp)
 
-     )
- }
+        )
+    }
 }
-@Preview
-@Composable
-fun WearAppPreview(){
-    // WearApp()
+
+@Preview(
+    widthDp = WEAR_PREVIEW_DEVICE_WIDTH_DP,
+    heightDp = WEAR_PREVIEW_DEVICE_HEIGHT_DP,
+    uiMode = WEAR_PREVIEW_UI_MODE,
+    backgroundColor = WEAR_PREVIEW_BACKGROUND_COLOR_BLACK,
+    showBackground = WEAR_PREVIEW_SHOW_BACKGROUND
+)@Composable
+fun WearAppPreview() {
+    LandingComposable(onNavigate = {})
 }
